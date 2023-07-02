@@ -66,7 +66,7 @@ using HK_project.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9dc324985c32d4d3b320fe77f865c4039f81f5b5954", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9dc324985c32d4d3b320fe77f865c4039f81f5b5956", async() => {
                 WriteLiteral(@"
     <meta charset=""UTF-8"">
     <meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
@@ -87,9 +87,9 @@ using HK_project.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9dc324985c32d4d3b320fe77f865c4039f81f5b7360", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9dc324985c32d4d3b320fe77f865c4039f81f5b7362", async() => {
                 WriteLiteral("\r\n    <div class=\"w-100 align-items-center justify-content-center d-flex flex-column\" style=\"height: 100vh;\">\r\n        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9dc324985c32d4d3b320fe77f865c4039f81f5b7741", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9dc324985c32d4d3b320fe77f865c4039f81f5b7743", async() => {
                     WriteLiteral("<p class=\"px-5 m-0\" style=\"font-size: 36pt;\">會員</p>");
                 }
                 );
@@ -110,7 +110,7 @@ using HK_project.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9dc324985c32d4d3b320fe77f865c4039f81f5b9492", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9dc324985c32d4d3b320fe77f865c4039f81f5b9494", async() => {
                     WriteLiteral("<p class=\"px-5 m-0 \" style=\"font-size: 36pt;\">使用者</p>");
                 }
                 );

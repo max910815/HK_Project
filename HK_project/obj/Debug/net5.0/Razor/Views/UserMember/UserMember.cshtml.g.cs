@@ -58,7 +58,7 @@ using HK_project.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed4e54b1006daa97adb2ecbd198c2a3dcefe54993330", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed4e54b1006daa97adb2ecbd198c2a3dcefe54993332", async() => {
                 WriteLiteral(@"
     <meta charset=""UTF-8"">
     <meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
@@ -79,7 +79,7 @@ using HK_project.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed4e54b1006daa97adb2ecbd198c2a3dcefe54994736", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed4e54b1006daa97adb2ecbd198c2a3dcefe54994738", async() => {
                 WriteLiteral(@"
     <div class=""w-100 align-items-center justify-content-center d-flex flex-column"" style=""height: 100vh;"">
         <button type=""button"" class=""btn btn-primary rounded-pill d-flex align-items-center justify-content-center"" style=""width:22.375rem; height: 5.75rem;""><p class=""px-5 m-0"" style=""font-size: 36pt;"">會員</p></button>
