@@ -177,3 +177,8 @@ C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\HK_project.csproj.CopyComplete
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\HK_project.genruntimeconfig.cache
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\ref\HK_project.dll
+C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\staticwebassets\HK_project.StaticWebAssets.Pack.cache
+C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\staticwebassets\msbuild.HK_project.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\staticwebassets\msbuild.build.HK_project.props
+C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.HK_project.props
+C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.HK_project.props
