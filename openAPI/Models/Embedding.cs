@@ -1,18 +1,16 @@
-﻿namespace openAPI.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public partial class Embedding
+namespace openAPI.Models
 {
-    public string EmbeddingId { get; set; } = null!;
-
-    public string EmbeddingQuestion { get; set; } = null!;
-
-    public string EmbeddingAnswer { get; set; } = null!;
-
-    public string Qa { get; set; } = null!;
-
-    public string EmbeddingVectors { get; set; } = null!;
-
-    public string? AifileId { get; set; }
-
-    public virtual Aifile? Aifile { get; set; }
+    public partial class Embedding
+    {
+        [Key]
+        public string EmbeddingId { get; set; }
+        public string? EmbeddingQuestion { get; set; }
+        public string? EmbeddingAnswer { get; set; }
+        public string Qa { get; set; }
+        public string EmbeddingVectors { get; set; }
+        public string AifileId { get; set; }
+        public virtual Aifile Aifile { get; set; }
+    }
 }

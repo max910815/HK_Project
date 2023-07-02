@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using openAPI.Models;
 
-namespace openAPI.Models;
+namespace openAPI.Data;
 
 public partial class HKContext : DbContext
 {
@@ -43,7 +44,7 @@ public partial class HKContext : DbContext
             entity.Property(e => e.AifilePath).HasColumnName("AIFilePath");
             entity.Property(e => e.AifileType).HasColumnName("AIFileType");
 
-            entity.HasOne(d => d.Application).WithMany(p => p.Aifiles)
+            entity.HasOne(d => d.Application).WithMany(p => p.Aifile)
                 .HasForeignKey(d => d.ApplicationId)
                 .OnDelete(DeleteBehavior.Cascade);
         });
@@ -52,7 +53,7 @@ public partial class HKContext : DbContext
         {
             entity.HasIndex(e => e.MemberId, "IX_Applications_MemberId");
 
-            entity.HasOne(d => d.Member).WithMany(p => p.Applications)
+            entity.HasOne(d => d.Member).WithMany(p => p.Application)
                 .HasForeignKey(d => d.MemberId)
                 .OnDelete(DeleteBehavior.Cascade);
         });
@@ -61,7 +62,7 @@ public partial class HKContext : DbContext
         {
             entity.HasIndex(e => e.UserId, "IX_Chats_UserId");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Chats).HasForeignKey(d => d.UserId);
+            entity.HasOne(d => d.User).WithMany(p => p.Chat).HasForeignKey(d => d.UserId);
         });
 
         modelBuilder.Entity<Embedding>(entity =>
@@ -94,7 +95,7 @@ public partial class HKContext : DbContext
             entity.Property(e => e.QahistoryQ).HasColumnName("QAHistoryQ");
             entity.Property(e => e.QahistoryVectors).HasColumnName("QAHistoryVectors");
 
-            entity.HasOne(d => d.Chat).WithMany(p => p.Qahistories)
+            entity.HasOne(d => d.Chat).WithMany(p => p.Qahistorie)
                 .HasForeignKey(d => d.ChatId)
                 .OnDelete(DeleteBehavior.Cascade);
         });
@@ -103,7 +104,7 @@ public partial class HKContext : DbContext
         {
             entity.HasIndex(e => e.ApplicationId, "IX_Users_ApplicationId");
 
-            entity.HasOne(d => d.Application).WithMany(p => p.Users)
+            entity.HasOne(d => d.Application).WithMany(p => p.User)
                 .HasForeignKey(d => d.ApplicationId)
                 .OnDelete(DeleteBehavior.Cascade);
         });

@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Azure.AI.OpenAI;
 using Microsoft.AspNetCore.Mvc;
+using openAPI.Data;
 using openAPI.Models;
 using openAPI.ViewModels;
 

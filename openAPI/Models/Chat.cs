@@ -1,16 +1,20 @@
-﻿namespace openAPI.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public partial class Chat
-{
-    public string ChatId { get; set; } = null!;
+namespace openAPI.Models {
+    public partial class Chat
+    {
+        public Chat()
+        {
+            Qahistorie = new HashSet<Qahistory>();
+        }
+        [Key]
+        public string ChatId { get; set; }
+        public DateTime ChatTime { get; set; }
+        public string ChatName { get; set; }
+        public string UserId { get; set; }
 
-    public DateTime ChatTime { get; set; }
-
-    public string ChatName { get; set; } = null!;
-
-    public string UserId { get; set; } = null!;
-
-    public virtual ICollection<Qahistory> Qahistories { get; set; } = new List<Qahistory>();
-
-    public virtual User User { get; set; } = null!;
+        public virtual User User { get; set; }
+        public virtual ICollection<Qahistory> Qahistorie { get; set; }
+    }
 }
+

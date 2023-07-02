@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using openAPI.Models;
+using openAPI.Data;
 
 #nullable disable
 
@@ -17,7 +17,7 @@ namespace openAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.7")
+                .HasAnnotation("ProductVersion", "7.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -39,6 +39,7 @@ namespace openAPI.Migrations
                         .HasColumnName("AIFileType");
 
                     b.Property<string>("ApplicationId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("AifileId");
@@ -54,14 +55,13 @@ namespace openAPI.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("MemberId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Model")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Parameter")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ApplicationId");
@@ -100,15 +100,14 @@ namespace openAPI.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AifileId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("AIFileId");
 
                     b.Property<string>("EmbeddingAnswer")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmbeddingQuestion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmbeddingVectors")
@@ -156,6 +155,7 @@ namespace openAPI.Migrations
                         .HasColumnName("QAHistoryId");
 
                     b.Property<string>("ChatId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("QahistoryA")
@@ -186,6 +186,7 @@ namespace openAPI.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ApplicationId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserEmail")
@@ -210,9 +211,10 @@ namespace openAPI.Migrations
             modelBuilder.Entity("openAPI.Models.Aifile", b =>
                 {
                     b.HasOne("openAPI.Models.Application", "Application")
-                        .WithMany("Aifiles")
+                        .WithMany("Aifile")
                         .HasForeignKey("ApplicationId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Application");
                 });
@@ -220,9 +222,10 @@ namespace openAPI.Migrations
             modelBuilder.Entity("openAPI.Models.Application", b =>
                 {
                     b.HasOne("openAPI.Models.Member", "Member")
-                        .WithMany("Applications")
+                        .WithMany("Application")
                         .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Member");
                 });
@@ -230,7 +233,7 @@ namespace openAPI.Migrations
             modelBuilder.Entity("openAPI.Models.Chat", b =>
                 {
                     b.HasOne("openAPI.Models.User", "User")
-                        .WithMany("Chats")
+                        .WithMany("Chat")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -243,7 +246,8 @@ namespace openAPI.Migrations
                     b.HasOne("openAPI.Models.Aifile", "Aifile")
                         .WithMany("Embeddings")
                         .HasForeignKey("AifileId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Aifile");
                 });
@@ -251,9 +255,10 @@ namespace openAPI.Migrations
             modelBuilder.Entity("openAPI.Models.Qahistory", b =>
                 {
                     b.HasOne("openAPI.Models.Chat", "Chat")
-                        .WithMany("Qahistories")
+                        .WithMany("Qahistorie")
                         .HasForeignKey("ChatId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Chat");
                 });
@@ -261,9 +266,10 @@ namespace openAPI.Migrations
             modelBuilder.Entity("openAPI.Models.User", b =>
                 {
                     b.HasOne("openAPI.Models.Application", "Application")
-                        .WithMany("Users")
+                        .WithMany("User")
                         .HasForeignKey("ApplicationId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Application");
                 });
@@ -275,24 +281,24 @@ namespace openAPI.Migrations
 
             modelBuilder.Entity("openAPI.Models.Application", b =>
                 {
-                    b.Navigation("Aifiles");
+                    b.Navigation("Aifile");
 
-                    b.Navigation("Users");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("openAPI.Models.Chat", b =>
                 {
-                    b.Navigation("Qahistories");
+                    b.Navigation("Qahistorie");
                 });
 
             modelBuilder.Entity("openAPI.Models.Member", b =>
                 {
-                    b.Navigation("Applications");
+                    b.Navigation("Application");
                 });
 
             modelBuilder.Entity("openAPI.Models.User", b =>
                 {
-                    b.Navigation("Chats");
+                    b.Navigation("Chat");
                 });
 #pragma warning restore 612, 618
         }

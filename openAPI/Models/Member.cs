@@ -1,14 +1,21 @@
-﻿namespace openAPI.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public partial class Member
-{
-    public string MemberId { get; set; } = null!;
+namespace openAPI.Models {
+    public partial class Member
+    {
+        public Member()
+        {
+            Application = new HashSet<Application>();
+        }
 
-    public string MemberName { get; set; } = null!;
+        [Key]
+        public string MemberId { get; set; }
+        public string MemberName { get; set; }
+        [DataType(DataType.EmailAddress)]
+        public string MemberEmail { get; set; }
+        [DataType(DataType.Password)]
+        public string MemberPassword { get; set; }
 
-    public string MemberEmail { get; set; } = null!;
-
-    public string MemberPassword { get; set; } = null!;
-
-    public virtual ICollection<Application> Applications { get; set; } = new List<Application>();
+        public virtual ICollection<Application> Application { get; set; }
+    }
 }

@@ -1,18 +1,23 @@
-﻿namespace openAPI.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public partial class Application
-{
-    public string ApplicationId { get; set; } = null!;
+namespace openAPI.Models {
+    public partial class Application
+    {
+        public Application()
+        {
+            User = new HashSet<User>();
+            Aifile = new HashSet<Aifile>();
+        }
 
-    public string Model { get; set; } = null!;
 
-    public string Parameter { get; set; } = null!;
+        [Key]
+        public string ApplicationId { get; set; }
+        public string? Model { get; set; }
+        public string? Parameter { get; set; }
+        public string MemberId { get; set; }
 
-    public string? MemberId { get; set; }
-
-    public virtual ICollection<Aifile> Aifiles { get; set; } = new List<Aifile>();
-
-    public virtual Member? Member { get; set; }
-
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+        public virtual Member Member { get; set; }
+        public virtual ICollection<Aifile> Aifile { get; set; }
+        public virtual ICollection<User> User { get; set; }
+    }
 }

@@ -1,19 +1,25 @@
-﻿namespace openAPI.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public partial class User
-{
-    public string UserId { get; set; } = null!;
+namespace openAPI.Models {
+    public partial class User
+    {
 
-    public string UserPassword { get; set; } = null!;
+        public User()
+        {
+            Chat = new HashSet<Chat>();
+        }
 
-    public string UserName { get; set; } = null!;
+        [Key]
+        public string UserId { get; set; }
+        public string UserName { get; set; }
+        [DataType(DataType.EmailAddress)]
+        public string UserEmail { get; set; }
+        [DataType(DataType.Password)]
+        public string UserPassword { get; set; }
+        public string ApplicationId { get; set; }
+        public Application Application { get; set; }
 
-    public string UserEmail { get; set; } = null!;
+        public virtual ICollection<Chat> Chat { get; set; }
 
-    public string? ApplicationId { get; set; }
-
-    public virtual Application? Application { get; set; }
-
-    public virtual ICollection<Chat> Chats { get; set; } = new List<Chat>();
-
+    }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace openAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class HKDatabase : Migration
+    public partial class DB1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,9 +30,9 @@ namespace openAPI.Migrations
                 columns: table => new
                 {
                     ApplicationId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Parameter = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MemberId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Model = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Parameter = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MemberId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -52,7 +52,7 @@ namespace openAPI.Migrations
                     AIFileId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AIFileType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AIFilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ApplicationId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    ApplicationId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,10 +70,10 @@ namespace openAPI.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ApplicationId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    UserPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ApplicationId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -91,11 +91,11 @@ namespace openAPI.Migrations
                 columns: table => new
                 {
                     EmbeddingId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    EmbeddingQuestion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmbeddingAnswer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmbeddingQuestion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmbeddingAnswer = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     QA = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmbeddingVectors = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AIFileId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    AIFileId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -136,7 +136,7 @@ namespace openAPI.Migrations
                     QAHistoryQ = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QAHistoryA = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QAHistoryVectors = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ChatId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    ChatId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {

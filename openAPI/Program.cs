@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using openAPI.Controllers;
-using openAPI.Models;
+using openAPI.Data;
 using openAPI.Services;
 using openAPI.Staging;
 

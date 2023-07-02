@@ -2,6 +2,7 @@
 using Azure.AI.OpenAI;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using openAPI.Data;
 using openAPI.Models;
 using openAPI.ViewModels;
 
