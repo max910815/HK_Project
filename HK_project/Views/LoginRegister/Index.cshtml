@@ -12,9 +12,9 @@
 
 <body>
     <div class="w-100 align-items-center justify-content-center d-flex flex-column" style="height: 100vh;">
-        <button type="button" class="btn btn-primary rounded-pill d-flex align-items-center justify-content-center" style="width:22.375rem; height: 5.75rem;"><p class="px-5 m-0" style="font-size: 36pt;">登入</p></button>
-        <button type="button" class="btn btn-secondary rounded-pill mt-5 d-flex align-items-center justify-content-center" style="width:22.375rem; height: 5.75rem"><p class="px-5 m-0 " style="font-size: 36pt;">註冊</p></button>
-        <button type="button" class="btn btn-danger rounded-pill mt-5 d-flex align-items-center justify-content-center" style="width:22.375rem; height: 5.75rem"><p class="px-5 m-0 " style="font-size: 36pt;">取消</p></button>
+        <a asp-action="Singin" asp-controller="LoginRegister" type="button" class="btn btn-primary rounded-pill d-flex align-items-center justify-content-center" style="width:22.375rem; height: 5.75rem;"><p class="px-5 m-0" style="font-size: 36pt;">登入</p></a>
+        <a asp-action="Login" asp-controller="LoginRegister" type="button" class="btn btn-secondary rounded-pill mt-5 d-flex align-items-center justify-content-center" style="width:22.375rem; height: 5.75rem"><p class="px-5 m-0 " style="font-size: 36pt;">註冊</p></a>
+        <a asp-action="Index" asp-controller="Home" type="button" class="btn btn-danger rounded-pill mt-5 d-flex align-items-center justify-content-center" style="width:22.375rem; height: 5.75rem"><p class="px-5 m-0 " style="font-size: 36pt;">取消</p></a>
     </div>
 </body>
 

@@ -19,22 +19,20 @@ namespace HK_Product.Services
             _hashService = hashService;
         }
 
-        public async Task<User> AuthenticateUser(LoginViewModel loginVM)
+        public async Task<Member> AuthenticateUser(LoginViewModel loginVM)
         {
             //find user
             // _hashService.MD5Hash(loginVM.Password)
-            var user = await _ctx.Users
-                .FirstOrDefaultAsync(u => u.UserEmail.ToUpper() == loginVM.Email.ToUpper() && u.UserPassword == _hashService.MD5Hash( loginVM.Password));
+            var member = await _ctx.Member
+                .FirstOrDefaultAsync(u => u.MemberEmail.ToUpper() == loginVM.Email.ToUpper() && u.MemberPassword == _hashService.MD5Hash( loginVM.Password));
 
-            if (user != null)
+            if (member != null)
             {
-                var userInfo = new User
+                var userInfo = new Member
                 {
-                    UserId = user.UserId,
-                    UserName = user.UserName,
-                    UserEmail = user.UserEmail,
-                    UserPassword = user.UserPassword
-                    
+                    MemberId = member.MemberId,
+                    MemberEmail = loginVM.Email,
+                    MemberPassword = loginVM.Password,
                 };
 
                 return userInfo;

@@ -89,3 +89,7 @@ C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\HK_project.genru
 C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\ref\HK_project.dll
 C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\UserMember\UserMember.cshtml.g.cs
 C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\LoginRegister\Index.cshtml.g.cs
+C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\LoginRegister\Singin.cshtml.g.cs
+C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\LoginRegister\Login.cshtml.g.cs
+C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\Member\Index.cshtml.g.cs
+C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\Member\Createapp.cshtml.g.cs
