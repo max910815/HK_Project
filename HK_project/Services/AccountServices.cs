@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using HK_Product.Models;
 using HK_project.Interface;
+using HK_Product.Data;
+using HK_project.Models;
+using HK_project.ViewModels;
 
 namespace HK_Product.Services
 {

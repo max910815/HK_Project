@@ -1,4 +1,4 @@
-﻿namespace HK_Product.ViewModels
+﻿namespace HK_project.ViewModels
 {
     public class RegisterViewModel
     {

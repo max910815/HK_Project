@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
-namespace HK_Product.Models
+namespace HK_project.Models
 {
     public partial class User
     {

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
-namespace HK_Product.Models
+namespace HK_project.Models
 {
     public partial class Aifile
     {
