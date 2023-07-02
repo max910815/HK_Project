@@ -10,16 +10,19 @@ namespace HK_project.Models
     {
         public Application()
         {
-            Aifiles = new HashSet<Aifile>();
+            User = new HashSet<User>();
+            Aifile = new HashSet<Aifile>();
         }
+     
+
         [Key]
         public string ApplicationId { get; set; }
         public string? Model { get; set; }
         public string? Parameter { get; set; }
-        public string UserId { get; set; }
+        public string MemberId { get; set; }
 
         public virtual Member Member { get; set; }
-        public virtual ICollection<Aifile> Aifiles { get; set; }
-        public virtual User User { get; set; }
+        public virtual ICollection<Aifile> Aifile { get; set; }
+        public virtual ICollection<User> User { get; set; }
     }
 }

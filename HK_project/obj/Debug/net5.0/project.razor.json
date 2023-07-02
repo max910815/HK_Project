@@ -17651,6 +17651,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\LoginRegister\\Index.cshtml",
+      "TargetPath": "Views\\LoginRegister\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -17663,11 +17668,6 @@
     {
       "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
     },
     {

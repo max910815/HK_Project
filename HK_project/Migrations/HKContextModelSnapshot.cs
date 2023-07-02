@@ -70,14 +70,9 @@ namespace HK_project.Migrations
                     b.Property<string>("Parameter")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("ApplicationId");
 
                     b.HasIndex("MemberId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Applications");
 
@@ -85,7 +80,7 @@ namespace HK_project.Migrations
                         new
                         {
                             ApplicationId = "A0001",
-                            UserId = "U0001"
+                            MemberId = "C0001"
                         });
                 });
 
@@ -114,7 +109,7 @@ namespace HK_project.Migrations
                         {
                             ChatId = "C0001",
                             ChatName = "Gay",
-                            ChatTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified).AddTicks(13),
+                            ChatTime = new DateTime(2023, 7, 2, 22, 44, 53, 525, DateTimeKind.Local).AddTicks(1111),
                             UserId = "U0001"
                         });
                 });
@@ -193,6 +188,15 @@ namespace HK_project.Migrations
                     b.HasKey("MemberId");
 
                     b.ToTable("Member");
+
+                    b.HasData(
+                        new
+                        {
+                            MemberId = "C0001",
+                            MemberEmail = "aa@gmail.com",
+                            MemberName = "aa",
+                            MemberPassword = "aaaaaa"
+                        });
                 });
 
             modelBuilder.Entity("HK_project.Models.Qahistory", b =>
@@ -242,6 +246,9 @@ namespace HK_project.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("ApplicationId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("UserEmail")
                         .HasColumnType("nvarchar(max)");
 
@@ -253,12 +260,15 @@ namespace HK_project.Migrations
 
                     b.HasKey("UserId");
 
+                    b.HasIndex("ApplicationId");
+
                     b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
                             UserId = "U0001",
+                            ApplicationId = "A0001",
                             UserEmail = "aaa@gmail.com",
                             UserName = "aaa",
                             UserPassword = "aaaaaa"
@@ -268,7 +278,7 @@ namespace HK_project.Migrations
             modelBuilder.Entity("HK_project.Models.Aifile", b =>
                 {
                     b.HasOne("HK_project.Models.Application", "Application")
-                        .WithMany("Aifiles")
+                        .WithMany("Aifile")
                         .HasForeignKey("ApplicationId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -278,22 +288,17 @@ namespace HK_project.Migrations
             modelBuilder.Entity("HK_project.Models.Application", b =>
                 {
                     b.HasOne("HK_project.Models.Member", "Member")
-                        .WithMany("Applications")
-                        .HasForeignKey("MemberId");
-
-                    b.HasOne("HK_project.Models.User", "User")
-                        .WithMany("Applications")
-                        .HasForeignKey("UserId");
+                        .WithMany("Application")
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Member");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("HK_project.Models.Chat", b =>
                 {
                     b.HasOne("HK_project.Models.User", "User")
-                        .WithMany("Chats")
+                        .WithMany("Chat")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -313,11 +318,21 @@ namespace HK_project.Migrations
             modelBuilder.Entity("HK_project.Models.Qahistory", b =>
                 {
                     b.HasOne("HK_project.Models.Chat", "Chat")
-                        .WithMany("Qahistories")
+                        .WithMany("Qahistorie")
                         .HasForeignKey("ChatId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Chat");
+                });
+
+            modelBuilder.Entity("HK_project.Models.User", b =>
+                {
+                    b.HasOne("HK_project.Models.Application", "Application")
+                        .WithMany("User")
+                        .HasForeignKey("ApplicationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Application");
                 });
 
             modelBuilder.Entity("HK_project.Models.Aifile", b =>
@@ -327,24 +342,24 @@ namespace HK_project.Migrations
 
             modelBuilder.Entity("HK_project.Models.Application", b =>
                 {
-                    b.Navigation("Aifiles");
+                    b.Navigation("Aifile");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("HK_project.Models.Chat", b =>
                 {
-                    b.Navigation("Qahistories");
+                    b.Navigation("Qahistorie");
                 });
 
             modelBuilder.Entity("HK_project.Models.Member", b =>
                 {
-                    b.Navigation("Applications");
+                    b.Navigation("Application");
                 });
 
             modelBuilder.Entity("HK_project.Models.User", b =>
                 {
-                    b.Navigation("Applications");
-
-                    b.Navigation("Chats");
+                    b.Navigation("Chat");
                 });
 #pragma warning restore 612, 618
         }

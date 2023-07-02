@@ -10,7 +10,7 @@ namespace HK_project.Models
     {
         public Chat()
         {
-            Qahistories = new HashSet<Qahistory>();
+            Qahistorie = new HashSet<Qahistory>();
         }
         [Key]
         public string ChatId { get; set; }
@@ -19,6 +19,6 @@ namespace HK_project.Models
         public string UserId { get; set; }
 
         public virtual User User { get; set; }
-        public virtual ICollection<Qahistory> Qahistories { get; set; }
+        public virtual ICollection<Qahistory> Qahistorie { get; set; }
     }
 }

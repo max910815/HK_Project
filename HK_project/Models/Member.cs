@@ -10,7 +10,7 @@ namespace HK_project.Models
     {
         public Member()
         {
-            Applications = new HashSet<Application>();
+            Application = new HashSet<Application>();
         }
 
         [Key]
@@ -21,6 +21,6 @@ namespace HK_project.Models
         [DataType(DataType.Password)]
         public string MemberPassword { get; set; }
 
-        public virtual ICollection<Application> Applications { get; set; }
+        public virtual ICollection<Application> Application { get; set; }
     }
 }

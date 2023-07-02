@@ -2,7 +2,7 @@
 
 namespace HK_project.Controllers
 {
-    public class UserMemberController : Controller
+    public class LoginRegisterController : Controller
     {
         public IActionResult Index()
         {

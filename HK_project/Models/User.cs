@@ -9,10 +9,12 @@ namespace HK_project.Models
 {
     public partial class User
     {
+
         public User()
         {
-            Chats = new HashSet<Chat>();
+            Chat = new HashSet<Chat>();
         }
+
         [Key]
         public string UserId { get; set; }
         public string UserName { get; set; }
@@ -20,9 +22,10 @@ namespace HK_project.Models
         public string UserEmail { get; set; }
         [DataType(DataType.Password)]
         public string UserPassword { get; set; }
+        public string ApplicationId { get; set; }
+        public Application Application { get; set; }
  
-        public virtual ICollection<Application> Applications { get; set; }
-        public virtual ICollection<Chat> Chats { get; set; }
+        public virtual ICollection<Chat> Chat { get; set; }
 
     }
 }

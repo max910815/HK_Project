@@ -20,14 +20,14 @@ namespace HK_Product.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Application>(options =>
-            //{
-            //    options.HasOne(m => m.Member).WithMany(m => m.Applications).HasForeignKey(m => m.MemberId).OnDelete(DeleteBehavior.Cascade);//刪掉後，相關聯的資料一併刪除
-            //});
+            modelBuilder.Entity<Application>(options =>
+            {
+                options.HasOne(m => m.Member).WithMany(m => m.Application).HasForeignKey(m => m.MemberId).OnDelete(DeleteBehavior.Cascade);//刪掉後，相關聯的資料一併刪除
+            });
 
             modelBuilder.Entity<Aifile>(options =>
             {
-                options.HasOne(a => a.Application).WithMany(a => a.Aifiles).HasForeignKey(a => a.ApplicationId).OnDelete(DeleteBehavior.Cascade);
+                options.HasOne(a => a.Application).WithMany(a => a.Aifile).HasForeignKey(a => a.ApplicationId).OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Embedding>(options =>
@@ -38,22 +38,26 @@ namespace HK_Product.Data
 
             modelBuilder.Entity<Chat>(options =>
             {
-                options.HasOne(u => u.User).WithMany(u => u.Chats).HasForeignKey(u => u.UserId).OnDelete(DeleteBehavior.Cascade);
+                options.HasOne(u => u.User).WithMany(u => u.Chat).HasForeignKey(u => u.UserId).OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<Qahistory>(options =>
             {
-                options.HasOne(c => c.Chat).WithMany(c => c.Qahistories).HasForeignKey(c => c.ChatId).OnDelete(DeleteBehavior.Cascade);
+                options.HasOne(c => c.Chat).WithMany(c => c.Qahistorie).HasForeignKey(c => c.ChatId).OnDelete(DeleteBehavior.Cascade);
+            });
+            modelBuilder.Entity<User>(options =>
+            {
+                options.HasOne(c => c.Application).WithMany(c => c.User).HasForeignKey(c => c.ApplicationId).OnDelete(DeleteBehavior.Cascade);
             });
 
 
-            //modelBuilder.Entity<Member>().HasData(
-            //    new Member { MemberId = "C0001", MemberName = "Althea", MemberEmail = "althea@gmail.com", MemberPassword = "althea01" },
-            //    new Member { MemberId = "C0002", MemberName = "Jimmy", MemberEmail = "jimmy@gmail.com", MemberPassword = "jimmy02" }
-            //);
+            modelBuilder.Entity<Member>().HasData(
+                new Member { MemberId = "C0001", MemberName = "aa", MemberEmail = "aa@gmail.com", MemberPassword = "aaaaaa" }
+                
+            );
 
             modelBuilder.Entity<Application>().HasData(
-                new Application { ApplicationId = "A0001", Model = null, Parameter = null, UserId = "U0001" }
+                new Application { ApplicationId = "A0001", Model = null, Parameter = null, MemberId = "C0001" }
                 );
 
             modelBuilder.Entity<Aifile>().HasData(
@@ -72,7 +76,7 @@ namespace HK_Product.Data
             );
 
             modelBuilder.Entity<Chat>().HasData(
-                new Chat { ChatId = "C0001", ChatTime = new DateTime(2023 / 05 / 30), ChatName = "Gay", UserId = "U0001" }
+                new Chat { ChatId = "C0001", ChatTime = DateTime.Now, ChatName = "Gay", UserId = "U0001" }
             );
 
             modelBuilder.Entity<Qahistory>().HasData(
@@ -81,7 +85,7 @@ namespace HK_Product.Data
             );
 
             modelBuilder.Entity<User>().HasData(
-                new User { UserId = "U0001", UserName = "aaa", UserEmail = "aaa@gmail.com", UserPassword = "aaaaaa"}
+                new User { UserId = "U0001", UserName = "aaa", UserEmail = "aaa@gmail.com", UserPassword = "aaaaaa",ApplicationId = "A0001" }
                );
 
 
