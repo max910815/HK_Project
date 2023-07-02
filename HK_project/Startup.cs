@@ -1,6 +1,11 @@
+using HK_Product.Data;
+using HK_Product.Services;
 using HK_project.Data;
+using HK_project.Interface;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -27,14 +32,29 @@ namespace HK_project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+
+            services.AddDbContext<HKContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<HKContext>();
             services.AddControllersWithViews();
+
+            services.AddSingleton<IHashService, HashService>();
+            services.AddScoped<AccountServices>();
+
+            //加入Cookie驗證, 同時設定選項
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    //預設登入驗證網址為Account/Login, 若想變更才需要設定LoginPath
+                    options.LoginPath = new PathString("/Account/Login/");
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(120);
+                    options.SlidingExpiration = true;
+                    options.AccessDeniedPath = "/Account/Forbidden/";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
