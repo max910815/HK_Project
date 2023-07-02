@@ -1,5 +1,4 @@
-﻿@Model HK_project.Models.Member;
-
+﻿@model HK_project.Models.Application;
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,15 +12,18 @@
 </head>
 
 <body>
-    <form class="w-100 align-items-center justify-content-center d-flex flex-column px-2" style="height: 100vh;">
+    <form  asp-controller="Member" class="w-100 align-items-center justify-content-center d-flex flex-column px-2" style="height: 100vh;">
         <div class="row w-100 align-items-center justify-content-center flex-column flex-sm-row " style="height: 100px;">
             <h1 class="col-sm-4 col d-flex m-0 h-100 align-items-center justify-content-center">會員ID</h1>
-            <input disabled class="h-100 col-md-5 col rounded-pill bg-body-secondary border-0 md-50 me-2 px-5" type="text" style="font-size: 36pt;" value=@Model.MemberId>
+            <input asp-for="MemberId" disabled class="h-100 col-md-5 col rounded-pill bg-body-secondary border-0 md-50 me-2 px-5" type="text" style="font-size: 36pt;" value=@ViewBag.Member.MemberName>
+
+            <!-- Add this line -->
+            <input type="hidden" asp-for="MemberId" value=@ViewBag.Member.MemberId>
                                                                                                                 
         </div>
         <div class="row w-100 align-items-center justify-content-center mt-5 flex-column flex-sm-row" style="height: 100px;">
-            <h1 class="col-sm-4 col d-flex m-0 h-100 align-items-center justify-content-center">應用名稱*</h1><input class="h-100 col-md-5 col rounded-pill bg-body-secondary border-0 md-50 me-2 px-5" type="text"
-                                                                                                                 style="font-size: 36pt;">
+            <h1 class="col-sm-4 col d-flex m-0 h-100 align-items-center justify-content-center">應用名稱*</h1>
+            <input class="h-100 col-md-5 col rounded-pill bg-body-secondary border-0 md-50 me-2 px-5" type="text" style="font-size: 36pt;">
         </div>
         <div class="row w-100 align-items-center justify-content-center mt-5 flex-column flex-sm-row" style="height: 150px;">
             <h1 class="col-sm-4 col d-flex m-0 h-100 align-items-center justify-content-center">預設參數*</h1>
@@ -30,14 +32,14 @@
                     <label for="rangeInput" class="form-label overflow-hidden"><h2>Template</h2></label>
                     <h2 class="px-2" id="rangeValue">1</h2>
                 </div>
-                <input type="range" class="form-range custom-range" id="rangeInput" min="0" max="2" step="0.01" value="1">
+                <input asp-for="Parameter" type="range" class="form-range custom-range" id="rangeInput" min="0" max="2" step="0.01" value="1">
             </div>
         </div>
         <div class="w-100 justify-content-around row position-absolute" style="height:100px;margin-top: 80px; bottom: 30px;">
-            <a class="btn btn-primary col-md-3 col-5 h-100 rounded-pill d-flex align-items-center justify-content-center">
+            <input type="submit" class="btn btn-primary col-md-3 col-5 h-100 rounded-pill d-flex align-items-center justify-content-center">
                 <h1>創建</h1>
-            </a>
-            <a class="btn btn-danger col-md-3 col-5 h-100 rounded-pill d-flex align-items-center justify-content-center">
+            </input>
+            <a asp-action="Index" asp-controller="Member" class="btn btn-danger col-md-3 col-5 h-100 rounded-pill d-flex align-items-center justify-content-center">
                 <h1>取消</h1>
             </a>
         </div>

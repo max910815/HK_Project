@@ -28,9 +28,10 @@ namespace HK_Product.Services
 
             if (member != null)
             {
-                var userInfo = new Member
+                Member userInfo = new Member
                 {
                     MemberId = member.MemberId,
+                    MemberName = member.MemberId,
                     MemberEmail = loginVM.Email,
                     MemberPassword = loginVM.Password,
                 };

@@ -1,0 +1,51 @@
+﻿@{
+    var app = ViewBag.app as List<Application>;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="w-100 " style="height: 100vh;">
+        <header class="w-100 border-bottom row m-0 justify-content-center align-items-center" style="height: 80px;">
+            <a asp-action="Index" asp-controller="Member" class="btn btn-danger col-9 d-flex justify-content-center align-items-center  h-75">
+                <h1>Home</h1>
+            </a>
+        </header>
+        <div class="w-100 align-items-center justify-content-start row flex-column flex-nowrap overflow-y-scroll" style="height: calc(100% - 160px);">
+            @foreach(var a in app)
+            {
+                <a  class="mt-5 btn btn-outline-secondary col-6 justify-content-between d-flex align-items-center " style="height: 60px;">
+                    <h2 class="col-4 m-0">@a.ApplicationId</h2>
+                    <div class="col-4 h-100 d-flex align-items-end justify-content-end">
+                        <h6>temp: @a.Parameter</h6>
+                    </div>
+                </a>
+            }
+
+
+        </div>
+        <footer class="w-100 border-top row m-0 justify-content-center align-items-center" style="height: 80px;">
+            <a asp-action="Uploadfileapp" asp-controller="Member" class="btn btn-primary col-9 d-flex justify-content-center align-items-center  h-75">
+                <h1>Enter</h1>
+            </a>
+        </footer>
+    </div>
+
+    <script>
+        $('#rangeInput').on('input', function () {
+            $('#rangeValue').text($(this).val());
+        })
+    </script>
+</body>
+
+</html>

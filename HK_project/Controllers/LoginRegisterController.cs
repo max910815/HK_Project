@@ -120,7 +120,7 @@ namespace HK_project.Controllers
 
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.NameIdentifier, MemberWithMaxId.MemberId)  ,
+                        new Claim(ClaimTypes.NameIdentifier, newMemberId)  ,
                         new Claim(ClaimTypes.Email, member.MemberEmail)
                     };
 

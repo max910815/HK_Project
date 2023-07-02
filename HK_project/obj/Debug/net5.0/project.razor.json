@@ -17646,6 +17646,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\Member\\Uploadfileapp.cshtml",
+      "TargetPath": "Views\\Member\\Uploadfileapp.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -17683,6 +17688,11 @@
     {
       "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\Member\\Chooseapp.cshtml",
+      "TargetPath": "Views\\Member\\Chooseapp.cshtml",
       "FileKind": "mvc"
     },
     {

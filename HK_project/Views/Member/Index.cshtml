@@ -11,15 +11,15 @@
 </head>
 
 <body>
-    <form class="w-100 align-items-center justify-content-center d-flex flex-column row m-0" style="height: 100vh;">
+    <form  class="w-100 align-items-center justify-content-center d-flex flex-column row m-0" style="height: 100vh;">
         <div class="w-100 align-items-center justify-content-center row row-cols-2 gap-lg-4 p-2" style="height:86%">
             <a asp-action="" asp-controller="" class="btn btn-outline-secondary border-3 h-50 col-lg-2 col-md-3 col rounded-4 d-flex align-items-center justify-content-center"><h1>會員管理</h1></a>
-            <a asp-action="" asp-controller="" class="btn btn-outline-secondary border-3 h-50 col-lg-2 col-md-3 col rounded-4 d-flex align-items-center justify-content-center"><h1>創建應用</h1></a>
-            <a asp-action="" asp-controller="" class="btn btn-outline-secondary border-3 h-50 col-lg-2 col-md-3 col rounded-4 d-flex align-items-center justify-content-center"><h1>選擇應用</h1></a>
+            <a asp-action="Createapp" asp-controller="Member" class="btn btn-outline-secondary border-3 h-50 col-lg-2 col-md-3 col rounded-4 d-flex align-items-center justify-content-center"><h1>創建應用</h1></a>
+            <a asp-action="Chooseapp" asp-controller="Member" class="btn btn-outline-secondary border-3 h-50 col-lg-2 col-md-3 col rounded-4 d-flex align-items-center justify-content-center"><h1>選擇應用</h1></a>
             <a asp-action="" asp-controller="" class="btn btn-outline-secondary border-3 h-50 col-lg-2 col-md-3 col rounded-4 d-flex align-items-center justify-content-center"><h1>使用問答</h1></a>
         </div>
         <div class="w-100 d-flex justify-content-center mt-2 row" style="height:12%">
-            <a asp-action="Singout" asp-controller="LoginRegister" class="btn btn-warning col-6  h-100 d-flex align-items-center justify-content-center"><h1>Log out</h1></a>
+            <a asp-action="Signout" asp-controller="LoginRegister" class="btn btn-warning col-6  h-100 d-flex align-items-center justify-content-center"><h1>Log out</h1></a>
         </div>
     </form>
 
