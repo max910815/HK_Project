@@ -9,7 +9,6 @@ namespace HK_project.ViewModels
         public string Email { get; set; }
 
         [Required(ErrorMessage = "必須輸入")]
-        [StringLength(20, MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
     }

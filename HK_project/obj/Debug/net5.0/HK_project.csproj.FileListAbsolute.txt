@@ -89,6 +89,12 @@ C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\HK_project.genru
 C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\ref\HK_project.dll
 C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\UserMember\UserMember.cshtml.g.cs
 C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\LoginRegister\Index.cshtml.g.cs
+<<<<<<< HEAD
+C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\LoginRegister\Singin.cshtml.g.cs
+C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\LoginRegister\Login.cshtml.g.cs
+C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\Member\Index.cshtml.g.cs
+C:\Users\a0966\Documents\HK_project\HK_project\obj\Debug\net5.0\Razor\Views\Member\Createapp.cshtml.g.cs
+=======
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\HK_project.dll
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\refint\HK_project.dll
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\HK_project.pdb
@@ -177,8 +183,12 @@ C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\HK_project.csproj.CopyComplete
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\HK_project.genruntimeconfig.cache
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\ref\HK_project.dll
+<<<<<<< HEAD
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\staticwebassets\HK_project.StaticWebAssets.Pack.cache
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\staticwebassets\msbuild.HK_project.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\staticwebassets\msbuild.build.HK_project.props
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.HK_project.props
 C:\Users\Double.J\source\repos\max910815\HK_Project\HK_project\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.HK_project.props
+=======
+>>>>>>> 80a31aa596c90b883f2d1ee396560e978d1bb018
+>>>>>>> 43a4c5fd35af87e058b8d2800f2b7f14bb12596b

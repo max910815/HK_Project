@@ -17636,6 +17636,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\Member\\Createapp.cshtml",
+      "TargetPath": "Views\\Member\\Createapp.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\Shared\\_LoginPartial.cshtml",
       "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
       "FileKind": "mvc"
@@ -17661,13 +17666,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\LoginRegister\\Singin.cshtml",
+      "TargetPath": "Views\\LoginRegister\\Singin.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\Member\\Index.cshtml",
+      "TargetPath": "Views\\Member\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\a0966\\Documents\\HK_project\\HK_project\\Views\\LoginRegister\\Login.cshtml",
+      "TargetPath": "Views\\LoginRegister\\Login.cshtml",
       "FileKind": "mvc"
     },
     {
