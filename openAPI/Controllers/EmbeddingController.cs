@@ -3,6 +3,7 @@ using Azure.AI.OpenAI;
 using Microsoft.AspNetCore.Mvc;
 using openAPI.ViewModels;
 
+
 namespace openAPI.Controllers
 {
     [Route("api/[controller]")]
