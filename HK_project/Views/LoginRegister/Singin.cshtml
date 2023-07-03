@@ -18,15 +18,15 @@
 <body>
     <form asp-controller="LoginRegister" class="w-100 align-items-center justify-content-center d-flex flex-column" style="height: 100vh;">
         <div class="row w-100 align-items-center justify-content-center" style="height: 100px;">
-            <label asp-for="Email" class="col-3 d-flex m-0 h-100 align-items-center justify-content-center">帳號</label>
-            <input asp-for="Email" class="h-100 col-md-5 col rounded-pill bg-body-secondary border-0 md-50 me-2" type="text">
+            <label asp-for="Email" class="col-3 d-flex m-0 h-100 align-items-center justify-content-center"><h1 class="m-0">帳號</h1></label>
+            <input asp-for="Email" class="h-100 col-md-5 col rounded-pill bg-body-secondary border-0 md-50 me-2" type="text" style="font-size: calc(1.375rem + 1vw);">
         </div>
         <div class="row w-100 align-items-center justify-content-center mt-5" style="height: 100px;">
-            <label asp-for="Password" class="col-3 d-flex m-0 h-100 align-items-center justify-content-center">密碼</label>
-            <input asp-for="Password" class="h-100 col-md-5 col rounded-pill bg-body-secondary border-0 md-50 me-2" type="text">
+            <label asp-for="Password" class="col-3 d-flex m-0 h-100 align-items-center justify-content-center"><h1 class="m-0">密碼</h1></label>
+            <input asp-for="Password" class="h-100 col-md-5 col rounded-pill bg-body-secondary border-0 md-50 me-2 type="text" style="font-size: calc(1.375rem + 1vw);">
         </div>
         <div class="w-100 justify-content-around row position-absolute" style="height:100px;margin-top: 80px; bottom: 30px;">
-            <input type="submit"  class="btn btn-primary col-md-3 col-5 h-100 rounded-pill d-flex align-items-center justify-content-center"><h1>登入</h1></input>
+            <input type="submit" class="btn btn-primary col-md-3 col-5 h-100 rounded-pill d-flex align-items-center justify-content-center" style="font-size: calc(1.375rem + 1vw);" value="登入">
             <a asp-action="Index" asp-controller="LoginRegister" class="btn btn-danger col-md-3 col-5 h-100 rounded-pill d-flex align-items-center justify-content-center"><h1>取消</h1></a>
         </div>
     </form>

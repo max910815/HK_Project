@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using openAPI.Data;
 using openAPI.Models;
 using openAPI.ViewModels;
+using openAPI.Data;
 
 namespace openAPI.Services
 {
@@ -34,8 +35,8 @@ namespace openAPI.Services
 
             var options = new ChatCompletionsOptions()
             {
-                Messages = { new ChatMessage(ChatRole.System, @"你是藍星金流的客服人員") ,
-                                    new ChatMessage(ChatRole.Assistant, $"你是一個客服人員,問題不知道或不相關請回答\"無相關資料,請在營業時間聯絡客服人員\",你只能參照「」內的內容回答問題「{ msg.Sim_Anser}」.只根據「」內的內容回答下面問題不要添加任何其他資訊:"),},
+                Messages = { new ChatMessage(ChatRole.System, @"你是藍星金流的客服人員"),
+                    new ChatMessage(ChatRole.Assistant, $"你是一個客服人員,問題不知道或不相關請回答\"無相關資料,請在營業時間聯絡客服人員\",你只能參照「」內的內容回答問題「{msg.Sim_Anser}」.只根據「」內的內容回答下面問題不要添加任何其他資訊:"), },
                 Temperature = msg.temperature,
                 MaxTokens = int.Parse(msg.Setting.Parameter),
                 NucleusSamplingFactor = (float)0.95,

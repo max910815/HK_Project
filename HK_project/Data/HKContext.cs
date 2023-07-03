@@ -57,12 +57,12 @@ namespace HK_Product.Data
             );
 
             modelBuilder.Entity<Application>().HasData(
-                new Application { ApplicationId = "A0001", Model = null, Parameter = null, MemberId = "C0001" }
+                new Application { ApplicationId = "A0001", Model = null, Parameter = null, MemberId = "C0001" , ApplicationName = "aaa"}
                 );
 
             modelBuilder.Entity<Aifile>().HasData(
-                new Aifile { AifileId = "D0001", AifileType = "json", AifilePath = "Upload/001.json", ApplicationId = "A0001" },
-                new Aifile { AifileId = "D0002", AifileType = "json", AifilePath = "Upload/002.json", ApplicationId = "A0001" }
+                new Aifile { AifileId = "D0001", AifileType = "json", AifilePath = "Upload/001.json", ApplicationId = "A0001" , Language = "eng" },
+                new Aifile { AifileId = "D0002", AifileType = "json", AifilePath = "Upload/002.json", ApplicationId = "A0001" , Language = "eng" }
             );
 
 

@@ -24,7 +24,6 @@ namespace HK_project.Models
         public string UserPassword { get; set; }
         public string ApplicationId { get; set; }
         public Application Application { get; set; }
- 
         public virtual ICollection<Chat> Chat { get; set; }
 
     }

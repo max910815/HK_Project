@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using openAPI.Data;
 using openAPI.Helper;
 using openAPI.Models;
 using openAPI.Services;
 using openAPI.ViewModels;
+using openAPI.Data;
 
 namespace openAPI.Controllers
 {
@@ -39,7 +39,7 @@ namespace openAPI.Controllers
             List<GetDataViewModel> Data = await _hkcontext.Embeddings.Where(x => x.AifileId == msg.DataId).Select(x => new GetDataViewModel { QA = x.Qa, Vector = x.EmbeddingVectors }).ToListAsync();
             if (Data.Count() == 0)
             {
-                return BadRequest("找無DataId");
+                return BadRequest("DataID不存在,DataID doesn't exist");
             }
 
             //餘弦比對及排序取得相似最高
@@ -53,7 +53,7 @@ namespace openAPI.Controllers
             string Anser_string = "";
             if (Order[0][1] < 0.75)
             {
-                return Ok("無相似資料");
+                return BadRequest("無相似資料");
             }
             else
             {
@@ -86,7 +86,7 @@ namespace openAPI.Controllers
             }
             else
             {
-                return Content("錯誤模型名稱");
+                return BadRequest("錯誤模型名稱");
             }
 
             //取得資料庫ID最大值 存取資料用
