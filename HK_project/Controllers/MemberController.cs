@@ -80,7 +80,7 @@ namespace HK_project.Controllers
         }
 
 
-
+        [HttpGet]
         public IActionResult Chooseapp( )
         {
             var memberid = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -88,8 +88,14 @@ namespace HK_project.Controllers
             ViewBag.App = app;
             return View();
         }
-
-
+        [HttpPost]
+        public IActionResult Chooseapp(string applicationId, string parameter)
+        {
+            ViewBag.ApplicationId = applicationId;
+            ViewBag.Parameter = parameter;
+            ViewBag.App = ViewBag.App;
+            return RedirectToAction("Uploadfileapp", "Member");
+        }
 
         [HttpGet]
         public IActionResult Uploadfileapp( )
@@ -150,7 +156,7 @@ namespace HK_project.Controllers
                             AifileId = id,
                             AifileType = fileType,
                             AifilePath = filePath,
-                            ApplicationId = memberId
+                            ApplicationId = ViewBag.ApplicationId
                         };
 
                         _ctx.Add(embs);

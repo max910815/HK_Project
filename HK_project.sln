@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HK_project", "HK_project\HK_project.csproj", "{AFFBC4F2-FDD5-4AE2-A7F8-671992B949E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HK_project", "HK_project\HK_project.csproj", "{AFFBC4F2-FDD5-4AE2-A7F8-671992B949E2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "openAPI", "openAPI\openAPI.csproj", "{C5293F94-5F4F-4B55-9523-83967D2785E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{AFFBC4F2-FDD5-4AE2-A7F8-671992B949E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFFBC4F2-FDD5-4AE2-A7F8-671992B949E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFFBC4F2-FDD5-4AE2-A7F8-671992B949E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5293F94-5F4F-4B55-9523-83967D2785E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5293F94-5F4F-4B55-9523-83967D2785E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5293F94-5F4F-4B55-9523-83967D2785E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5293F94-5F4F-4B55-9523-83967D2785E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

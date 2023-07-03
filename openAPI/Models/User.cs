@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
-#nullable disable
-
-namespace HK_project.Models
-{
+namespace openAPI.Models {
     public partial class User
     {
 
@@ -24,6 +18,7 @@ namespace HK_project.Models
         public string UserPassword { get; set; }
         public string ApplicationId { get; set; }
         public Application Application { get; set; }
+
         public virtual ICollection<Chat> Chat { get; set; }
 
     }

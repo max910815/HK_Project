@@ -22,15 +22,22 @@
             </a>
         </header>
         <div class="w-100 align-items-center justify-content-start row flex-column flex-nowrap overflow-y-scroll" style="height: calc(100% - 160px);">
-            @foreach(var a in app)
+            @if(app.Count == 0)
             {
-                <a  class="mt-5 btn btn-outline-secondary col-6 justify-content-between d-flex align-items-center " style="height: 60px;">
-                    <h2 class="col-4 m-0">@a.ApplicationId</h2>
-                    <div class="col-4 h-100 d-flex align-items-end justify-content-end">
-                        <h6>temp: @a.Parameter</h6>
-                    </div>
-                </a>
+                <h1 class="text-center">No Application</h1>
+            }else{
+                @foreach (var a in app)
+                {
+                    <a onclick="sendData('@a.ApplicationId', '@a.Parameter')" class="mt-5 btn btn-outline-secondary col-6 justify-content-between d-flex align-items-center" style="height: 60px;">
+                        <h2 class="col-4 m-0">@a.ApplicationId</h2>
+                        <div class="col-4 h-100 d-flex align-items-end justify-content-end">
+                            <h6>temp: @a.Parameter</h6>
+                        </div>
+                    </a>
+
+                }
             }
+            
 
 
         </div>
@@ -40,11 +47,37 @@
             </a>
         </footer>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
         $('#rangeInput').on('input', function () {
             $('#rangeValue').text($(this).val());
         })
+
+        function sendData(applicationId, parameter) {
+            var data = {
+                applicationId: applicationId,
+                parameter: parameter
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/Member/Chooseapp',  // 替换为您的控制器和动作名称
+                data: data,
+                success: function (response) {
+                    // 请求成功后的处理逻辑
+                    console.log('Data sent successfully');
+                    window.location.href = '/Member/Uploadfileapp';
+                },
+                error: function (error) {
+                    // 请求失败后的处理逻辑
+                    console.log('Error sending data');
+                }
+            });
+        }
+
+       
+
     </script>
 </body>
 

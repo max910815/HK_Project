@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-#nullable disable
-
-namespace HK_project.Models
+namespace openAPI.Models
 {
     public partial class Aifile
     {
@@ -17,7 +13,7 @@ namespace HK_project.Models
         public string AifileType { get; set; }
         public string AifilePath { get; set; }
         public string ApplicationId { get; set; }
-        public string Language { get; set; }
+
         public virtual Application Application { get; set; }
         public virtual ICollection<Embedding> Embeddings { get; set; }
     }

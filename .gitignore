@@ -888,6 +888,5 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp,python,pycharm,c,c++,aspnetcore,dotnetcore
 
-
-**/obj/**
-**/bin/**
+HK_project\HK_project\bin
+HK_project\openAPI\bin

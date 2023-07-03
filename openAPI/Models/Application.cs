@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-#nullable disable
-
-namespace HK_project.Models
-{
+namespace openAPI.Models {
     public partial class Application
     {
         public Application()
@@ -13,14 +8,13 @@ namespace HK_project.Models
             User = new HashSet<User>();
             Aifile = new HashSet<Aifile>();
         }
-     
+
 
         [Key]
         public string ApplicationId { get; set; }
         public string? Model { get; set; }
         public string? Parameter { get; set; }
         public string MemberId { get; set; }
-        public string ApplicationName { get; set; }
 
         public virtual Member Member { get; set; }
         public virtual ICollection<Aifile> Aifile { get; set; }
