@@ -15,7 +15,7 @@ namespace openAPI.Models {
         public string? Model { get; set; }
         public string? Parameter { get; set; }
         public string MemberId { get; set; }
-
+        public string ApplicationName { get; set; }
         public virtual Member Member { get; set; }
         public virtual ICollection<Aifile> Aifile { get; set; }
         public virtual ICollection<User> User { get; set; }

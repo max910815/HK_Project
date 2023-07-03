@@ -84,7 +84,7 @@ namespace openAPI.Controllers
             {
                 Ans = await _AnswerService.OtherChatAsync(Anser_Model);
             }
-            else
+            else 
             {
                 return BadRequest("錯誤模型名稱");
             }

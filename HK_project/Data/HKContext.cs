@@ -61,17 +61,17 @@ namespace HK_Product.Data
                 );
 
             modelBuilder.Entity<Aifile>().HasData(
-                new Aifile { AifileId = "D0001", AifileType = "json", AifilePath = "Upload/001.json", ApplicationId = "A0001" , Language = "eng" },
-                new Aifile { AifileId = "D0002", AifileType = "json", AifilePath = "Upload/002.json", ApplicationId = "A0001" , Language = "eng" }
+                new Aifile { AifileId = "D0001", AifileType = "json", AifilePath = "Upload/001.json", ApplicationId = "A0001" , Language = "en" },
+                new Aifile { AifileId = "D0002", AifileType = "json", AifilePath = "Upload/002.json", ApplicationId = "A0001" , Language = "en" }
             );
 
 
 
             modelBuilder.Entity<Embedding>().HasData(
-                new Embedding { EmbeddingId = "E0001", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0001" },
-                new Embedding { EmbeddingId = "E0002", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0001" },
-                new Embedding { EmbeddingId = "E0003", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0002" },
-                new Embedding { EmbeddingId = "E0004", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0002" }
+                new Embedding { EmbeddingId = "E00001", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0001" },
+                new Embedding { EmbeddingId = "E00002", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0001" },
+                new Embedding { EmbeddingId = "E00003", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0002" },
+                new Embedding { EmbeddingId = "E00004", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0002" }
 
             );
 
