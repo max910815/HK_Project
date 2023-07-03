@@ -13,7 +13,7 @@ namespace openAPI.Models
         public string AifileType { get; set; }
         public string AifilePath { get; set; }
         public string ApplicationId { get; set; }
-        public string Language { get; set; }
+        public string? Language { get; set; }
 
         public virtual Application Application { get; set; }
         public virtual ICollection<Embedding> Embeddings { get; set; }

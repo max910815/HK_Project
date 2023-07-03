@@ -42,6 +42,9 @@ namespace openAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Language")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("AifileId");
 
                     b.HasIndex(new[] { "ApplicationId" }, "IX_AIFiles_ApplicationId");
@@ -53,6 +56,10 @@ namespace openAPI.Migrations
                 {
                     b.Property<string>("ApplicationId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ApplicationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MemberId")
                         .IsRequired()

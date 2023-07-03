@@ -10,6 +10,7 @@ using openAPI.ViewModels;
 using System.Net;
 using System.Text.RegularExpressions;
 using openAPI.Data;
+using Newtonsoft.Json;
 
 namespace openAPI.Controllers
 {
@@ -19,10 +20,12 @@ namespace openAPI.Controllers
     {
         private readonly HKContext _hkcontext;
         private readonly AnswerService _answerService;
-        public pdfController(HKContext hkcontext, AnswerService answerService)
+        private readonly TranslateService _translateService;
+        public pdfController(HKContext hkcontext, AnswerService answerService,TranslateService translateService)
         {
             _hkcontext = hkcontext;
             _answerService = answerService;
+            _translateService = translateService;
         }
         [HttpGet]
         public ActionResult<string> Get()//先放著 可能會廢棄OuOb 下面有升級版
@@ -70,7 +73,7 @@ namespace openAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<string>> Post(PdfViewModel pdf)
             {
-            string filePath = @$"../HK_project/Upload/{pdf.AifileName}.pdf";
+            string filePath = @$"../HK_project/{pdf.AifilePath}";
             PdfReader reader = new PdfReader(filePath);
             if (!System.IO.File.Exists(filePath))
             {
@@ -105,12 +108,20 @@ namespace openAPI.Controllers
                 {
                     maxId = "E00001";
                 }
-                var result = await _answerService.EmbeddingAsync(clear_done);
-                _hkcontext.Embeddings.Add(new Embedding { EmbeddingId = maxId, AifileId = pdf.AifileId, EmbeddingQuestion = "test", EmbeddingAnswer = "test", Qa = clear_done, EmbeddingVectors = string.Join(",", result) });
-                await _hkcontext.SaveChangesAsync();
+                if (clear_done != string.Empty)
+                {
+                    var result = await _answerService.EmbeddingAsync(clear_done);
+                    _hkcontext.Embeddings.Add(new Embedding { EmbeddingId = maxId, AifileId = pdf.AifileId, EmbeddingQuestion = "test", EmbeddingAnswer = "test", Qa = clear_done, EmbeddingVectors = string.Join(",", result) });
+                    await _hkcontext.SaveChangesAsync();
+                }
                 
             }
             reader.Close();
+            var lan = await _translateService.Getlunguage(_hkcontext.Embeddings.FirstOrDefault(x => x.AifileId == pdf.AifileId).Qa);
+            List<Dictionary<string, object>> response = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(lan);
+            string l= response[0]["language"].ToString();
+            _hkcontext.Aifiles.FirstOrDefault(x => x.AifileId == pdf.AifileId).Language = l;
+            await _hkcontext.SaveChangesAsync();
             return Ok("成功");
         }
     }

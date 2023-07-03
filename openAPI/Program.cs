@@ -17,6 +17,7 @@ builder.Services.AddDbContext<HKContext>(options => options.UseSqlServer(builder
 builder.Services.AddScoped<EmbeddingController>();
 builder.Services.AddScoped<TurboController>();
 builder.Services.AddScoped<AnswerService>();
+builder.Services.AddScoped<TranslateService>();
 builder.Services.AddCors(options => options.AddPolicy("AllowAll", builder =>
 {
     builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();

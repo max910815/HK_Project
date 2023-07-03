@@ -28,6 +28,7 @@ namespace HK_Product.Data
             modelBuilder.Entity<Aifile>(options =>
             {
                 options.HasOne(a => a.Application).WithMany(a => a.Aifile).HasForeignKey(a => a.ApplicationId).OnDelete(DeleteBehavior.Cascade);
+                options.Property(x => x.Language).IsRequired(false);
             });
 
             modelBuilder.Entity<Embedding>(options =>
@@ -52,12 +53,12 @@ namespace HK_Product.Data
 
 
             modelBuilder.Entity<Member>().HasData(
-                new Member { MemberId = "C0001", MemberName = "aa", MemberEmail = "aa@gmail.com", MemberPassword = "aaaaaa" }
+                new Member { MemberId = "C0001", MemberName = "上研", MemberEmail = "QQ@gmail.com", MemberPassword = "Password" }
                 
             );
 
             modelBuilder.Entity<Application>().HasData(
-                new Application { ApplicationId = "A0001", Model = null, Parameter = null, MemberId = "C0001" , ApplicationName = "aaa"}
+                new Application { ApplicationId = "A0001", Model = "gpt-35-turbo", Parameter ="500", MemberId = "C0001" , ApplicationName = "華電"}
                 );
 
             modelBuilder.Entity<Aifile>().HasData(
@@ -68,10 +69,10 @@ namespace HK_Product.Data
 
 
             modelBuilder.Entity<Embedding>().HasData(
-                new Embedding { EmbeddingId = "E00001", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0001" },
-                new Embedding { EmbeddingId = "E00002", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0001" },
-                new Embedding { EmbeddingId = "E00003", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0002" },
-                new Embedding { EmbeddingId = "E00004", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0002" }
+                new Embedding { EmbeddingId = "H00001", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0001" },
+                new Embedding { EmbeddingId = "H00002", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0001" },
+                new Embedding { EmbeddingId = "H00003", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0002" },
+                new Embedding { EmbeddingId = "H00004", EmbeddingQuestion =null, EmbeddingAnswer =null, Qa = "abc", EmbeddingVectors = "123,345,789", AifileId = "D0002" }
 
             );
 
