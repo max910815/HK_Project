@@ -36,9 +36,7 @@
             </div>
         </div>
         <div class="w-100 justify-content-around row position-absolute" style="height:100px;margin-top: 80px; bottom: 30px;">
-            <input type="submit" class="btn btn-primary col-md-3 col-5 h-100 rounded-pill d-flex align-items-center justify-content-center">
-                <h1>創建</h1>
-            </input>
+            <input type="submit" class="btn btn-primary col-md-3 col-5 h-100 rounded-pill d-flex align-items-center justify-content-center" style="font-size: calc(1.375rem + 1vw);" value="創建">
             <a asp-action="Index" asp-controller="Member" class="btn btn-danger col-md-3 col-5 h-100 rounded-pill d-flex align-items-center justify-content-center">
                 <h1>取消</h1>
             </a>
@@ -47,9 +45,11 @@
     </form>
 
     <script>
-        $('#rangeInput').on('input', function () {
-            $('#rangeValue').text($(this).val());
-        })
+        rangeInput = document.getElementById('rangeInput');
+        rangeInput.addEventListener('input', function () {
+            rangeValue = document.getElementById('rangeValue');
+            rangeValue.innerText = rangeInput.value;
+        });
     </script>
 </body>
 

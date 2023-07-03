@@ -1,4 +1,6 @@
-﻿using iTextSharp.text.pdf;
+﻿using Azure.AI.OpenAI;
+using Azure;
+using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 using Microsoft.AspNetCore.Mvc;
 using openAPI.Helper;
@@ -27,17 +29,17 @@ namespace openAPI.Controllers
         {
             PdfReader reader = new PdfReader("./PDF/華電.pdf");
             List<string> groupedSentences = new List<string>();
-
+            
             string[] uselessWords = { "is", "some", "with", "it", "contains" };
 
             for (int page = 1; page <= reader.NumberOfPages; page++) //reader.NumberOfPages
             {
                 string text = PdfTextExtractor.GetTextFromPage(reader, page, new LocationTextExtractionStrategy()); // 讀取當頁的字
-
+            
                 string cleanedText = Regex.Replace(text, @"[\p{P}-[.]]|\r|\n", "");
 
                 foreach (string word in uselessWords)
-                {
+            {
                     cleanedText = cleanedText.Replace(word, "");
                 }
 
@@ -46,7 +48,7 @@ namespace openAPI.Controllers
 
 
             reader.Close();
-
+            
             foreach (var sentences in groupedSentences)
             {
                 string maxId;
@@ -67,7 +69,7 @@ namespace openAPI.Controllers
 
         [HttpPost]
         public async Task<ActionResult<string>> Post(PdfViewModel pdf)
-        {
+            {
             string filePath = @$"../HK_project/Upload/{pdf.AifileName}.pdf";
             PdfReader reader = new PdfReader(filePath);
             if (!System.IO.File.Exists(filePath))
@@ -75,7 +77,7 @@ namespace openAPI.Controllers
                 return NotFound("文件不存在");
             }
             List<string> groupedSentences = new List<string>(); // 中文集
-
+                
             HashSet<string> stopWords = new HashSet<string>();
             using (StreamReader sr = new StreamReader("./Assest/Stop_word/Stop_word.txt"))
             {
@@ -106,7 +108,7 @@ namespace openAPI.Controllers
                 var result = await _answerService.EmbeddingAsync(clear_done);
                 _hkcontext.Embeddings.Add(new Embedding { EmbeddingId = maxId, AifileId = pdf.AifileId, EmbeddingQuestion = "test", EmbeddingAnswer = "test", Qa = clear_done, EmbeddingVectors = string.Join(",", result) });
                 await _hkcontext.SaveChangesAsync();
-
+                
             }
             reader.Close();
             return Ok("成功");
