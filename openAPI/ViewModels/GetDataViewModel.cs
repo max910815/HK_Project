@@ -1,6 +1,6 @@
 ﻿namespace openAPI.ViewModels
 {
-    public class GetData
+    public class GetDataViewModel
     {
         public string QA { get; set; }
         public string Vector { get; set; }

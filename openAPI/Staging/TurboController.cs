@@ -17,7 +17,7 @@ namespace openAPI.Staging
             _hkcontext = hkcontext;
         }
         [HttpPost]
-        public IActionResult Turbo([FromBody] TurboModel msg)
+        public IActionResult Turbo([FromBody] TurboViewModel msg)
         {
             OpenAIClient client = new OpenAIClient(new Uri("https://hacker6.openai.azure.com/"), new AzureKeyCredential("50520d3c1ceb4e79aefe93a6550b9eba"));
 
@@ -43,7 +43,7 @@ namespace openAPI.Staging
             Response<ChatCompletions> responseWithoutStream = client.GetChatCompletionsAsync("gpt-35-turbo", options).GetAwaiter().GetResult();//azure的模型部屬名稱
 
             string completions = responseWithoutStream.Value.Choices[0].Message.Content.ToString();
-            TurboAnserModel Anser = new TurboAnserModel { Ans = completions };
+            TurboAnserViewModel Anser = new TurboAnserViewModel { Ans = completions };
             return Ok(Anser);
         }
     }

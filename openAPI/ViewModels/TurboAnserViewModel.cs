@@ -1,6 +1,6 @@
 ﻿namespace openAPI.ViewModels
 {
-    public class TurboAnserModel
+    public class TurboAnserViewModel
     {
         public required string Ans { get; set; }
     }

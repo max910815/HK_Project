@@ -2,7 +2,7 @@
 
 namespace openAPI.ViewModels
 {
-    public class TurboModel
+    public class TurboViewModel
     {
         public required string DataId { get; set; }
         public required string Question { get; set; }

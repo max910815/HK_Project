@@ -1,6 +1,6 @@
 ﻿namespace openAPI.ViewModels
 {
-    public class SimilarModel
+    public class SimilarViewModel
     {
         public required string ChatId { get; set; }
         public required float temperature { get; set; }

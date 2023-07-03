@@ -1,6 +1,6 @@
 ﻿namespace openAPI.ViewModels
 {
-    public class EmbeddingModel
+    public class EmbeddingViewModel
     {
         public required string Q { get; set; }
     }

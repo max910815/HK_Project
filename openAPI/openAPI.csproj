@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="PDF\**" />
+    <Content Remove="PDF\**" />
+    <EmbeddedResource Remove="PDF\**" />
+    <None Remove="PDF\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.5" />
     <PackageReference Include="Azure.Identity" Version="1.9.0" />
     <PackageReference Include="iTextSharp" Version="5.5.13.3" />
@@ -29,7 +36,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="PDF\" />
   </ItemGroup>
 
 </Project>

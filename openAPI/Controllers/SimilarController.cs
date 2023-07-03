@@ -29,14 +29,14 @@ namespace openAPI.Controllers
         /// 0
         /// </returns>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] SimilarModel msg)
+        public async Task<IActionResult> Post([FromBody] SimilarViewModel msg)
         {
 
             //問題轉向量
             var Question_result = await _AnswerService.EmbeddingAsync(msg.Question);
 
             //取得資料庫要餘弦比對的向量集及中文集
-            List<GetData> Data = await _hkcontext.Embeddings.Where(x => x.AifileId == msg.DataId).Select(x => new GetData { QA = x.Qa, Vector = x.EmbeddingVectors }).ToListAsync();
+            List<GetDataViewModel> Data = await _hkcontext.Embeddings.Where(x => x.AifileId == msg.DataId).Select(x => new GetDataViewModel { QA = x.Qa, Vector = x.EmbeddingVectors }).ToListAsync();
             if (Data.Count() == 0)
             {
                 return BadRequest("找無DataId");
@@ -60,7 +60,7 @@ namespace openAPI.Controllers
                 for (int i = 0; i < Order.Length; i++)
                 {
                     int num_index = (int)Order[i][0];
-                    GetData dt = Data[num_index];
+                    GetDataViewModel dt = Data[num_index];
                     Anser_string += dt.QA;
                 }
             }
@@ -73,7 +73,7 @@ namespace openAPI.Controllers
             }
 
             //根據應用設定使用不同的模型生成答案 得到的回傳值即為答案
-            TurboModel Anser_Model = new TurboModel { DataId = msg.DataId, Question = msg.Question, Sim_Anser = Anser_string, Setting = Set, temperature = msg.temperature, ChatId = msg.ChatId };
+            TurboViewModel Anser_Model = new TurboViewModel { DataId = msg.DataId, Question = msg.Question, Sim_Anser = Anser_string, Setting = Set, temperature = msg.temperature, ChatId = msg.ChatId };
             string Ans = "";
             if (Set.Model == "gpt-35-turbo")
             {
@@ -113,7 +113,7 @@ namespace openAPI.Controllers
 
             _hkcontext.Add(qahistory);
             await _hkcontext.SaveChangesAsync();
-            return Ok(new TurboAnserModel { Ans = Ans });
+            return Ok(new TurboAnserViewModel { Ans = Ans });
         }
     }
 

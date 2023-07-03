@@ -25,7 +25,7 @@ namespace openAPI.Services
             var client_embedding = await client.GetEmbeddingsAsync("embedding", options);
             return client_embedding.Value.Data[0].Embedding.ToList();
         }
-        public async Task<string> TurboChatAsync(TurboModel msg)
+        public async Task<string> TurboChatAsync(TurboViewModel msg)
         {
             OpenAIClient client = new OpenAIClient(new Uri(_configuration["endpoint"]), new AzureKeyCredential(_configuration["API_Key"]));
 
@@ -54,7 +54,7 @@ namespace openAPI.Services
 
             return completions;
         }
-        public async Task<string> OtherChatAsync(TurboModel msg)
+        public async Task<string> OtherChatAsync(TurboViewModel msg)
         {
             OpenAIClient client = new OpenAIClient(new Uri(_configuration["endpoint"]), new AzureKeyCredential(_configuration["API_Key"]));
 
