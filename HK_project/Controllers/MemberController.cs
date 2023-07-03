@@ -172,9 +172,15 @@ namespace HK_project.Controllers
 
 
 
+        public IActionResult qa()
+        {
+           return  View();
+        }
 
-
-
+        public IActionResult a()
+        {
+            return View();
+        }
 
 
     }
