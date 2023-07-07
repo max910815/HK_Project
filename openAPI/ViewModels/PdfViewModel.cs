@@ -2,7 +2,7 @@
 {
     public class PdfViewModel
     {
-        public string AifileId { get; set; }
+        public int AifileId { get; set; }
         public string AifilePath { get; set; }
     }
 }

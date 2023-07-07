@@ -11,8 +11,8 @@ namespace openAPI.Staging
     [ApiController]
     public class TurboController : ControllerBase
     {
-        private readonly HKContext _hkcontext;
-        public TurboController(HKContext hkcontext)
+        private readonly HkdbContext _hkcontext;
+        public TurboController(HkdbContext hkcontext)
         {
             _hkcontext = hkcontext;
         }
@@ -21,7 +21,7 @@ namespace openAPI.Staging
         {
             OpenAIClient client = new OpenAIClient(new Uri("https://hacker6.openai.azure.com/"), new AzureKeyCredential("50520d3c1ceb4e79aefe93a6550b9eba"));
 
-            List<Qahistory> qahistory = _hkcontext.Qahistories.Where(x => x.ChatId == msg.ChatId).OrderByDescending(y => y.QahistoryId).Take(3).Reverse().ToList();
+            List<Qahistory> qahistory = _hkcontext.Qahistorys.Where(x => x.ChatId == msg.ChatId).OrderByDescending(y => y.QahistoryId).Take(3).Reverse().ToList();
             IList<ChatMessage> messages = new List<ChatMessage>();
 
             var options = new ChatCompletionsOptions()

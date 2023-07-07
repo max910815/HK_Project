@@ -12,9 +12,9 @@ namespace openAPI.Controllers
     [ApiController]
     public class SimilarController : ControllerBase//餘弦相似 輸入{"ChatId":"聊天室的ID","Question":"要問的問題","DataId":"餘弦要參照的DataId"}
     {
-        private readonly HKContext _hkcontext;
+        private readonly HkdbContext _hkcontext;
         private readonly AnswerService _AnswerService;
-        public SimilarController(HKContext hkcontext, AnswerService AnswerService)
+        public SimilarController(HkdbContext hkcontext, AnswerService AnswerService)
         {
             _hkcontext = hkcontext;
             _AnswerService = AnswerService;
@@ -31,24 +31,38 @@ namespace openAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] SimilarViewModel msg)
         {
-
             //問題轉向量
-            var Question_result = await _AnswerService.EmbeddingAsync(msg.Question);
+            Task<List<float>> Question_result_task = Task.Run(async () =>
+            {
+                return await _AnswerService.EmbeddingAsync(msg.Question);
+            });
+            //要做餘弦的原始資料
+            Task<List<GetDataViewModel>> Data_task = Task.Run(async () =>
+            {
+                return await _AnswerService.GetData(msg.ApplicationId);
+            });
+            //抓到要使用的應用設置(模型、maxtoken等)
+            Task<Application> Set_tesk = Task.Run(async () =>
+            {
+                return await _hkcontext.Applications.FirstOrDefaultAsync(x => x.ApplicationId == msg.ApplicationId);
+            });
 
-            //取得資料庫要餘弦比對的向量集及中文集
-            List<GetDataViewModel> Data = await _hkcontext.Embeddings.Where(x => x.AifileId == msg.DataId).Select(x => new GetDataViewModel { QA = x.Qa, Vector = x.EmbeddingVectors }).ToListAsync();
+
+            Task.WaitAll(Data_task, Question_result_task);
+            List<float> Question_result = Question_result_task.Result;
+            List<GetDataViewModel> Data = Data_task.Result;
             if (Data.Count() == 0)
             {
                 return BadRequest("DataID不存在,DataID doesn't exist");
             }
-
-            //餘弦比對及排序取得相似最高
             float[] Sim = new float[Data.Count];
             Parallel.For(0, Data.Count, i =>
             {
                 Sim[i] = ExtensionVectorOperation.CosineSimilarity(Question_result, Data[i].Vector.Split(",").Select(float.Parse));
             });
-            float[][] Order = Sim.Select((value, index) => new[] { index, value }).OrderByDescending(o => o[1]).Take(3).ToArray();
+            float[][] Order = Sim.Select((value, index) => new[] { index, value })
+                                 .OrderByDescending(o => o[1])
+                                 .Take(3).ToArray();
             //將於弦最高資料排成字串 生成答案用
             string Anser_string = "";
             if (Order[0][1] < 0.75)
@@ -66,14 +80,16 @@ namespace openAPI.Controllers
             }
             //return Ok(Anser_string); //看最相關字串 
             //取得要使用的應用設定 模型 maxtoken等
-            Application Set = await _hkcontext.Applications.FirstOrDefaultAsync(x => x.ApplicationId == msg.ApplicationId);
+            await Set_tesk;
+            Application Set = Set_tesk.Result;
+
             if (Set == null)
             {
                 return BadRequest("應用ID不存在,ApplicationId doesn't exist");
             }
 
             //根據應用設定使用不同的模型生成答案 得到的回傳值即為答案
-            TurboViewModel Anser_Model = new TurboViewModel { DataId = msg.DataId, Question = msg.Question, Sim_Anser = Anser_string, Setting = Set, temperature = msg.temperature, ChatId = msg.ChatId };
+            TurboViewModel Anser_Model = new TurboViewModel { Question = msg.Question, Sim_Anser = Anser_string, Setting = Set, temperature = msg.temperature, ChatId = msg.ChatId };
             string Ans = "";
             if (Set.Model == "gpt-35-turbo")
             {
@@ -84,30 +100,17 @@ namespace openAPI.Controllers
             {
                 Ans = await _AnswerService.OtherChatAsync(Anser_Model);
             }
-            else 
-            {
-                return BadRequest("錯誤模型名稱");
-            }
-
-            //取得資料庫ID最大值 存取資料用
-            string maxId;
-            if (_hkcontext.Qahistories.Any())
-            {
-                var maxHistoryId = await _hkcontext.Qahistories.MaxAsync(q => q.QahistoryId);
-                maxId = $"H{int.Parse(maxHistoryId.Substring(1)) + 1:D5}";
-            }
             else
             {
-                maxId = "H00001";
+                return BadRequest("錯誤模型名稱");
             }
 
             //將總資料存進資料庫
             Qahistory qahistory = new Qahistory()
             {
-                QahistoryId = maxId,
                 QahistoryQ = msg.Question,
                 QahistoryA = Ans,
-                QahistoryVectors = string.Join(",", Question_result),
+                QahistoryVector = string.Join(",", Question_result),
                 ChatId = msg.ChatId
             };
 

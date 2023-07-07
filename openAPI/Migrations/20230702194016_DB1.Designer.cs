@@ -11,7 +11,7 @@ using openAPI.Data;
 
 namespace openAPI.Migrations
 {
-    [DbContext(typeof(HKContext))]
+    [DbContext(typeof(HkdbContext))]
     [Migration("20230702194016_DB1")]
     partial class DB1
     {

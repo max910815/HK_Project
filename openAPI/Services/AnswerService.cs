@@ -11,9 +11,9 @@ namespace openAPI.Services
 {
     public class AnswerService
     {
-        private readonly HKContext _hkcontext;
+        private readonly HkdbContext _hkcontext;
         private readonly IConfiguration _configuration;
-        public AnswerService(HKContext hkcontext, IConfiguration configuration)
+        public AnswerService(HkdbContext hkcontext, IConfiguration configuration)
         {
             _hkcontext = hkcontext;
             _configuration = configuration;
@@ -26,11 +26,32 @@ namespace openAPI.Services
             var client_embedding = await client.GetEmbeddingsAsync("embedding", options);
             return client_embedding.Value.Data[0].Embedding.ToList();
         }
+
+        public async Task<List<GetDataViewModel>> GetData(int Id)
+        {
+            List<GetDataViewModel> Data = new List<GetDataViewModel>();
+
+            using (var HKDB = new HkdbContext())
+            {
+                AiFile[] aifiles = await HKDB.AiFiles.Where(x => x.ApplicationId == Id).ToArrayAsync();
+                foreach (AiFile aifile in aifiles)
+                {
+                    IQueryable<GetDataViewModel> EmbeddingItems = HKDB.Embeddings.Where(y => y.AifileId == aifile.AifileId)
+                                                                                       .Select(z => new GetDataViewModel { QA = z.Qa, Vector = z.EmbeddingVector });
+                    foreach (var embeddingItem in EmbeddingItems)
+                    {
+                        Data.Add(embeddingItem);
+                    }
+                }
+            }
+
+            return Data;
+        }
         public async Task<string> TurboChatAsync(TurboViewModel msg)
         {
             OpenAIClient client = new OpenAIClient(new Uri(_configuration["endpoint"]), new AzureKeyCredential(_configuration["API_Key"]));
 
-            List<Qahistory> qahistory = _hkcontext.Qahistories.Where(x => x.ChatId == msg.ChatId).OrderByDescending(y => y.QahistoryId).Take(3).Reverse().ToList();
+            List<Qahistory> qahistory = _hkcontext.Qahistorys.Where(x => x.ChatId == msg.ChatId).OrderByDescending(y => y.QahistoryId).Take(3).Reverse().ToList();
             IList<ChatMessage> messages = new List<ChatMessage>();
 
             var options = new ChatCompletionsOptions()
@@ -59,7 +80,7 @@ namespace openAPI.Services
         {
             OpenAIClient client = new OpenAIClient(new Uri(_configuration["endpoint"]), new AzureKeyCredential(_configuration["API_Key"]));
 
-            List<Qahistory> qahistory = await _hkcontext.Qahistories.Where(x => x.ChatId == msg.ChatId).OrderByDescending(y => y.QahistoryId).Take(3).Reverse().ToListAsync();
+            List<Qahistory> qahistory = await _hkcontext.Qahistorys.Where(x => x.ChatId == msg.ChatId).OrderByDescending(y => y.QahistoryId).Take(3).Reverse().ToListAsync();
 
             string prompt = "";
             prompt += $"問題不知道或不相關請回答\"無相關資料,請在營業時間聯絡客服人員\",你只能參照「」內的內容回答問題「{msg.Sim_Anser}」.只根據「」內的內容回答下面問題不要添加任何其他資訊:";

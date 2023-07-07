@@ -1,23 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace openAPI.Models {
-    public partial class Application
-    {
-        public Application()
-        {
-            User = new HashSet<User>();
-            Aifile = new HashSet<Aifile>();
-        }
+namespace openAPI.Models;
 
+public partial class Application
+{
+    public int ApplicationId { get; set; }
 
-        [Key]
-        public string ApplicationId { get; set; }
-        public string? Model { get; set; }
-        public string? Parameter { get; set; }
-        public string MemberId { get; set; }
-        public string ApplicationName { get; set; }
-        public virtual Member Member { get; set; }
-        public virtual ICollection<Aifile> Aifile { get; set; }
-        public virtual ICollection<User> User { get; set; }
-    }
+    public string? Model { get; set; }
+
+    public string? Parameter { get; set; }
+
+    public string? ApplicationName { get; set; }
+
+    public int MemberId { get; set; }
+
+    public virtual ICollection<AiFile> AiFiles { get; set; } = new List<AiFile>();
+
+    public virtual Member Member { get; set; } = null!;
 }

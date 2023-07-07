@@ -1,21 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace openAPI.Models
+namespace openAPI.Models;
+
+public partial class AiFile
 {
-    public partial class Aifile
-    {
-        public Aifile()
-        {
-            Embeddings = new HashSet<Embedding>();
-        }
-        [Key]
-        public string AifileId { get; set; }
-        public string AifileType { get; set; }
-        public string AifilePath { get; set; }
-        public string ApplicationId { get; set; }
-        public string? Language { get; set; }
+    public int AifileId { get; set; }
 
-        public virtual Application Application { get; set; }
-        public virtual ICollection<Embedding> Embeddings { get; set; }
-    }
+    public string? AifileType { get; set; }
+
+    public string? AifilePath { get; set; }
+
+    public string? Language { get; set; }
+
+    public int ApplicationId { get; set; }
+
+    public virtual Application Application { get; set; } = null!;
+
+    public virtual ICollection<Embedding> Embeddings { get; set; } = new List<Embedding>();
 }
