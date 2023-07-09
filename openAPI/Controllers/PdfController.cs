@@ -1,6 +1,4 @@
-﻿using Azure.AI.OpenAI;
-using Azure;
-using iTextSharp.text.pdf;
+﻿using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 using Microsoft.AspNetCore.Mvc;
 using openAPI.Helper;
@@ -30,12 +28,8 @@ namespace openAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<string>> Post(PdfViewModel pdf)
         {
-            string filePath = @$"../HK_project/{pdf.AifilePath}";
-            PdfReader reader = new PdfReader(filePath);
-            if (!System.IO.File.Exists(filePath))
-            {
-                return NotFound("文件不存在");
-            }
+            int fileId = _hkcontext.AiFiles.Max(x => x.AifileId);
+            PdfReader reader = new PdfReader($"../HK_project/Upload/{pdf.AifileName}");
             List<string> groupedSentences = new List<string>(); // 中文集
 
             HashSet<string> stopWords = new HashSet<string>();
@@ -58,17 +52,17 @@ namespace openAPI.Controllers
                 string clear_done = PdfControllerHelpers.RemoveStopWords(text, stopWords);
                 if (clear_done != string.Empty)
                 {
-                    var result = await _answerService.EmbeddingAsync(clear_done);
-                    _hkcontext.Embeddings.Add(new Embedding { AifileId = pdf.AifileId, EmbeddingQuestion = "test", EmbeddingAnswer = "test", Qa = clear_done, EmbeddingVector = string.Join(",", result) });
+                    List<float> result = await _answerService.EmbeddingAsync(clear_done);
+                    _hkcontext.Embeddings.Add(new Embedding { AifileId = fileId, EmbeddingQuestion = "test", EmbeddingAnswer = "test", Qa = clear_done, EmbeddingVector = string.Join(",", result) });
                     await _hkcontext.SaveChangesAsync();
                 }
 
             }
             reader.Close();
-            var lan = await _translateService.Getlunguage(_hkcontext.Embeddings.FirstOrDefault(x => x.AifileId == pdf.AifileId).Qa);
+            var lan = await _translateService.Getlunguage(_hkcontext.Embeddings.FirstOrDefault(x => x.AifileId == fileId).Qa);
             List<Dictionary<string, object>> response = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(lan);
             string l = response[0]["language"].ToString();
-            _hkcontext.AiFiles.FirstOrDefault(x => x.AifileId == pdf.AifileId).Language = l;
+            _hkcontext.AiFiles.FirstOrDefault(x => x.AifileId == fileId).Language = l;
             await _hkcontext.SaveChangesAsync();
             return Ok("成功");
         }
