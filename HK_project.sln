@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HK_project", "HK_project\HK
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "openAPI", "openAPI\openAPI.csproj", "{C5293F94-5F4F-4B55-9523-83967D2785E5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HKDB", "HKDB\HKDB.csproj", "{C0022245-CA62-4E6D-846B-3988459F5BC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C5293F94-5F4F-4B55-9523-83967D2785E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5293F94-5F4F-4B55-9523-83967D2785E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5293F94-5F4F-4B55-9523-83967D2785E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0022245-CA62-4E6D-846B-3988459F5BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0022245-CA62-4E6D-846B-3988459F5BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0022245-CA62-4E6D-846B-3988459F5BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0022245-CA62-4E6D-846B-3988459F5BC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

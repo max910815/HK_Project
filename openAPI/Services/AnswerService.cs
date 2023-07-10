@@ -58,7 +58,7 @@ namespace openAPI.Services
                 Messages = { new ChatMessage(ChatRole.System, @"你是藍星金流的客服人員"),
                     new ChatMessage(ChatRole.Assistant, $"你是一個客服人員,問題不知道或不相關請回答\"無相關資料,請在營業時間聯絡客服人員\",你只能參照「」內的內容回答問題「{msg.Sim_Anser}」.只根據「」內的內容回答下面問題不要添加任何其他資訊:"), },
                 Temperature = msg.temperature,
-                MaxTokens = int.Parse(msg.Setting.Parameter),
+                MaxTokens = int.Parse(msg.Parameter),
                 NucleusSamplingFactor = (float)0.95,
                 FrequencyPenalty = 0,
                 PresencePenalty = 0,
@@ -95,12 +95,12 @@ namespace openAPI.Services
 
             CompletionsOptions options = new CompletionsOptions()
             {
-                MaxTokens = int.Parse(msg.Setting.Parameter),
+                MaxTokens = int.Parse(msg.Parameter),
                 Temperature = msg.temperature,
                 Prompts = { $"{prompt}" },
             };
 
-            Response<Completions> response = await client.GetCompletionsAsync(msg.Setting.Model, options);
+            Response<Completions> response = await client.GetCompletionsAsync(msg.Model, options);
 
             string completions = response.Value.Choices[0].Text.ToString();
 

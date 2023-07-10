@@ -89,7 +89,7 @@ namespace openAPI.Controllers
             }
 
             //根據應用設定使用不同的模型生成答案 得到的回傳值即為答案
-            TurboViewModel Anser_Model = new TurboViewModel { Question = msg.Question, Sim_Anser = Anser_string, Setting = Set, temperature = msg.temperature, ChatId = msg.ChatId };
+            TurboViewModel Anser_Model = new TurboViewModel { Question = msg.Question, Sim_Anser = Anser_string, Model=Set.Model,Parameter=Set.Parameter, temperature = msg.temperature, ChatId = msg.ChatId };
             string Ans = "";
             if (Set.Model == "gpt-35-turbo")
             {
