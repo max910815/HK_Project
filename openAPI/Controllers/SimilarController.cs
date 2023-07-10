@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using openAPI.Helper;
-using openAPI.Models;
+using HKDB.Models;
 using openAPI.Services;
 using openAPI.ViewModels;
-using openAPI.Data;
+using HKDB.Data;
 
 namespace openAPI.Controllers
 {
@@ -12,9 +12,9 @@ namespace openAPI.Controllers
     [ApiController]
     public class SimilarController : ControllerBase//餘弦相似 輸入{"ChatId":"聊天室的ID","Question":"要問的問題","DataId":"餘弦要參照的DataId"}
     {
-        private readonly HkdbContext _hkcontext;
+        private readonly HKContext _hkcontext;
         private readonly AnswerService _AnswerService;
-        public SimilarController(HkdbContext hkcontext, AnswerService AnswerService)
+        public SimilarController(HKContext hkcontext, AnswerService AnswerService)
         {
             _hkcontext = hkcontext;
             _AnswerService = AnswerService;

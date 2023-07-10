@@ -2,12 +2,12 @@
 using iTextSharp.text.pdf.parser;
 using Microsoft.AspNetCore.Mvc;
 using openAPI.Helper;
-using openAPI.Models;
+using HKDB.Models;
 using openAPI.Services;
 using openAPI.ViewModels;
 using System.Net;
 using System.Text.RegularExpressions;
-using openAPI.Data;
+using HKDB.Data;
 using Newtonsoft.Json;
 
 namespace openAPI.Controllers
@@ -16,10 +16,10 @@ namespace openAPI.Controllers
     [ApiController]
     public class pdfController : ControllerBase
     {
-        private readonly HkdbContext _hkcontext;
+        private readonly HKContext _hkcontext;
         private readonly AnswerService _answerService;
         private readonly TranslateService _translateService;
-        public pdfController(HkdbContext hkcontext, AnswerService answerService,TranslateService translateService)
+        public pdfController(HKContext hkcontext, AnswerService answerService,TranslateService translateService)
         {
             _hkcontext = hkcontext;
             _answerService = answerService;

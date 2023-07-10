@@ -1,5 +1,4 @@
-﻿using openAPI.Models;
-
+﻿
 namespace openAPI.ViewModels
 {
     public class TurboViewModel

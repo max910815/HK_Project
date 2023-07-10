@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using openAPI.Controllers;
-using openAPI.Data;
+using HKDB.Data;
 using openAPI.Services;
 using openAPI.Staging;
 
@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<HkdbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("HK")));
+builder.Services.AddDbContext<HKContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("HK")));
 builder.Services.AddScoped<EmbeddingController>();
 builder.Services.AddScoped<TurboController>();
 builder.Services.AddScoped<AnswerService>();
